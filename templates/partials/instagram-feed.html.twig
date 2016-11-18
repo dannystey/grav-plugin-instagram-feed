@@ -1,0 +1,15 @@
+{% if feed %}
+<ul class="instagram-feed">
+    {% for item in feed|slice(0, count) %}
+        <li>
+            <a href="{{ item.link }}" target="_blank">
+                <img src="{{ item.images.thumbnail.url }}" alt="">
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>
+    Could not load the Instagram feed!
+</p>
+{% endif %}

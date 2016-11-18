@@ -1,0 +1,61 @@
+name: Instagram Feed
+version: 1.0.0
+description: Get your latest Instagram posts on your Grav Application.
+icon: instagram
+author:
+  name: Danny Stey
+  email: mail@danny-stey.de
+homepage: https://github.com/danny-stey/grav-plugin-instagram-feed
+keywords: grav, plugin, instagram, instagram feed
+bugs: https://github.com/danny-stey/grav-plugin-instagram-feed/issues
+docs: https://github.com/danny-stey/grav-plugin-instagram-feed/blob/develop/README.md
+license: MIT
+
+form:
+  validation: strict
+  fields:
+    enabled:
+      type: toggle
+      label: Plugin status
+      highlight: 1
+      default: 0
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    instagram_feed:
+      type: section
+      text: Settings
+      underline: true
+      fields:
+
+        instagram_feed.count:
+          type: text
+          size: small
+          label: Amount of Images to show
+          placeholder: Defaults to 10 max is 20
+          default: 10,
+          valdiate:
+            type: number
+            min: 1
+            max: 20
+
+        instagram_feed.username:
+          type: text
+          size: small
+          label: Instagram Username
+          placeholder: username
+
+        instagram_feed.cache_expires:
+          type: text
+          size: small
+          label: Seconds to cache the feed
+          placeholder: Default is 300
+          default: 300,
+          validate:
+            type: number
+            min: 300
+            max: 60000
+
