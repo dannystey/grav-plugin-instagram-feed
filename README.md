@@ -65,7 +65,7 @@ And it will render the ` user/plugins/instagram-feed/templates/partials/instagra
 {% endif %}
 ```
 
-### Costumize template
+### Costomize template
 if you want to modify the template please copy that template file into your `user/themes/your-theme/templates/partials` folder and name it `instagram-feed.html.twig`. It will automatically take your file instead of the default one.
 
 ### Define a special template
