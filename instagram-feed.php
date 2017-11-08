@@ -134,14 +134,14 @@ class InstagramFeedPlugin extends Plugin
         $this->cache_id = md5(__NAMESPACE__ . '_' . $this->username);
 
         // first fetch the data from cache
-        $result = null; //$this->cache->fetch($this->cache_id);
+        $result = $this->cache->fetch($this->cache_id);
 
         // if result is null, try to get it via curl request.
         if(empty($result)) {
 
             try {
                 // creating the feed url
-                $feed = 'https://www.instagram.com/'.$this->username.'/media/';
+                $feed = 'https://www.instagram.com/'.$this->username.'/?__a=1';
                 // using the Grav Response Class for the curl request to instagram.
                 $result = Response::get($feed);
 
@@ -168,8 +168,18 @@ class InstagramFeedPlugin extends Plugin
 
         $data = json_decode($json);
 
-        if($data->status == 'ok') {
-            return $data->items;
+        if($data->user->username == $this->username) {
+            $result = $data->user->media->nodes;
+            // bring it back to the old syntax
+            return array_map(function ($item) {
+                $item->images = (object) array(
+                    'thumbnail' => (object) array(
+                        'url' => $item->thumbnail_src
+                    )
+                );
+                $item->link = 'https://www.instagram.com/p/' . $item->code;
+                return $item;
+            }, $result);
         }
         else {
             return false;

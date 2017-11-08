@@ -1,5 +1,7 @@
 # Instagram Feed Plugin
 
+> IMPORTANT! Instagram changed there routes. so the `/media` route does not work anymore. So I had to change the Code to fetch the data via `?__a=1` (by the way thanks to @Bussmeyer for giving the advise). So if you will update to this version, please check your custom templates, the data structure changed.
+
 The **Instagram Feed** Plugin is for [Grav CMS](http://github.com/getgrav/grav). Get your Instagram Feed on your Grav Application.
 
 > NOTE: To use this plugin, you should pass a ***public*** Instagram feed.
@@ -82,7 +84,7 @@ Sometimes you would generate the feed with a dynamic username. Therefore I devel
 
     
 ### Behind the scenes
-The plugin is requesting the Instagram feed url `https://www.instagram.com/username/media`. The data that is passed to your template are exactly the same like the response of Instagram. If you want to know, what dataset do you get. Comment the `dump($feed)` in and you will get the feed dataset.
+The plugin is requesting the Instagram feed url `https://www.instagram.com/username/?__a=1`. The data that is passed to your template are exactly the same like the response of Instagram. If you want to know, what dataset do you get. Comment the `dump($feed)` in and you will get the feed dataset.
 
 ### Settings in the Admin Panel
 if you are using the Admin Plugin of Grav, you have the following options:
