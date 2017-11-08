@@ -141,7 +141,7 @@ class InstagramFeedPlugin extends Plugin
 
             try {
                 // creating the feed url
-                $feed = 'https://www.instagram.com/'.$this->username.'/media/';
+                $feed = 'https://www.instagram.com/' . $this->username . '/?__a=1';
                 // using the Grav Response Class for the curl request to instagram.
                 $result = Response::get($feed);
 
@@ -168,10 +168,9 @@ class InstagramFeedPlugin extends Plugin
 
         $data = json_decode($json);
 
-        if($data->status == 'ok') {
-            return $data->items;
-        }
-        else {
+        if ($data->user->username == $this->username) {
+            return $data->user->media->nodes;
+        } else {
             return false;
         }
 
