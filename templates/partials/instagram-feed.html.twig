@@ -2,8 +2,8 @@
 <ul class="instagram-feed">
     {% for item in feed|slice(0, count) %}
         <li>
-            <a href="{{ item.link }}" target="_blank">
-                <img src="{{ item.images.thumbnail.url }}" alt="">
+            <a href="https://www.instagram.com/p/{{ item.code }}" target="_blank">
+                <img src="{{ item.display_src }}" alt="">
             </a>
         </li>
     {% endfor %}
