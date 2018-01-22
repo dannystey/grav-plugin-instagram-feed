@@ -5,7 +5,7 @@ icon: instagram
 author:
   name: Danny Stey
   email: mail@danny-stey.de
-homepage: https://github.com/danny-stey/grav-plugin-instagram-feed
+homepage: https://github.com/dannystey/grav-plugin-instagram-feed
 keywords: grav, plugin, instagram, instagram feed
 bugs: https://github.com/dannystey/grav-plugin-instagram-feed/issues
 docs: https://github.com/dannystey/grav-plugin-instagram-feed/blob/master/README.md
