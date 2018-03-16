@@ -168,16 +168,18 @@ class InstagramFeedPlugin extends Plugin
 
         $data = json_decode($json);
 
-        if($data->user->username == $this->username) {
-            $result = $data->user->media->nodes;
+        if($data->graphql->user->username == $this->username) {
+            $result = $data->graphql->user->edge_owner_to_timeline_media->edges;
             // bring it back to the old syntax
             return array_map(function ($item) {
                 $item->images = (object) array(
                     'thumbnail' => (object) array(
-                        'url' => $item->thumbnail_src
+                        'url' => $item->node->thumbnail_src
                     )
                 );
-                $item->link = 'https://www.instagram.com/p/' . $item->code;
+                $item->caption = $item->node->edge_media_to_caption->edges[0]->node->text;
+                $item->date = $item->node->taken_at_timestamp;
+                $item->link = 'https://www.instagram.com/p/' . $item->node->shortcode;
                 return $item;
             }, $result);
         }
