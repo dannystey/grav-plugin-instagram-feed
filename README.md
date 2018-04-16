@@ -1,3 +1,18 @@
+# PLEASE DO NOT USE THIS PLUGIN ANYMORE! USE THIS ONE -> https://github.com/artifex404/grav-plugin-instagram
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Instagram Feed Plugin
 
 > IMPORTANT! Instagram changed there routes. so the `/media` route does not work anymore. So I had to change the Code to fetch the data via `?__a=1` (by the way thanks to @Bussmeyer for giving the advise). So if you will update to this version, please check your custom templates, the data structure changed.
